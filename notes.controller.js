@@ -1,23 +1,23 @@
-import { writeFile } from 'fs/promises';
+const fs = require('fs/promises');
 
 async function addNote (title) {
 
-    const notes = reqire('./db.json');
+    const notes = require('./db.json');
 
     const note = {
-        title,
+        title: title,
         id: Date.now().toString()
     }
 
     notes.push(note);
 
-    await writeFile('./db.json', JSON.stringify(note));
+    await fs.writeFile('./db.json', JSON.stringify(notes));
 
     // notes.push(note);
 }
 
 function getNotesList () {
-
+    return require('./db.json');
 }
 
-export default {addNote, getNotesList};
+module.exports = {addNote, getNotesList};

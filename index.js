@@ -1,6 +1,6 @@
 const yargs = require('yargs');
 const pkg = require('./package.json');
-const {addNote, getNoteList} = require('./notes.controller').default
+const {addNote, getNotesList} = require('./notes.controller');
 
 const version = pkg.version;
 const author = pkg.author;
@@ -24,7 +24,8 @@ yargs.command({
     command: 'list',
     describe: "Show note list",
     handler () {
-        console.log("Show note list")
+        const notes = getNotesList();
+        console.log(notes)
     }
 });
 
